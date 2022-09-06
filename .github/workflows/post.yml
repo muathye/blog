@@ -22,4 +22,3 @@ jobs:
         destination_head_branch: 'post'
         user_email: 'muath.ye@gmail.com'
         user_name: 'muath-ye'
-        pull_request_reviewers: 'muath-ye'
