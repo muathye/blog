@@ -1,17 +1,25 @@
 # File: .github/workflows/post.yml
+name: Post
 
-on:
-  push:
-    branches:
-    - master
+on: push
 
 jobs:
   pull-request:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
-    - name: pull-request
-      uses: muathye/portal/pull-request@v2
+    - name: Checkout
+      uses: actions/checkout@v2
+
+    - name: Create pull request
+      uses: muath-ye/action-pull-request-another-repo@v1.0.1
+      env:
+        API_TOKEN_GITHUB: ${{ secrets.API_TOKEN_GITHUB }}
       with:
-        destination_branch: "develop"
-        github_token: ${{ secrets.GITHUB_TOKEN }}
+        source_folder: '/'
+        destination_repo: 'muathye/portal'
+        destination_folder: 'docs'
+        destination_base_branch: 'develop'
+        destination_head_branch: 'post'
+        user_email: 'muath.ye@gmail.com'
+        user_name: 'muath-ye'
+        pull_request_reviewers: 'muath-ye'
